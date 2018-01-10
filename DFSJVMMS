@@ -3,8 +3,8 @@
 * Or specify the class path, as demonstrated in this example.
 ********************************************************************
 -Djava.class.path=>                                                 
-/u/ims/usr/lpp/ims/ims13/imsjava/imsudb.jar:>                       
-/u/ims/usr/lpp/ims/ims13/imsjava/imsutm.jar:>                       
+/u/ims/usr/lpp/ims/ims14/imsjava/imsudb.jar:>                       
+/u/ims/usr/lpp/ims/ims14/imsjava/imsutm.jar:>                       
 /path/to/yourJavaApp.jar                                              
 ********************************************************************
 * The following JVM options are a subset of the options allowed     
