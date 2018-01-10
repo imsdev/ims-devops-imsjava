@@ -618,8 +618,8 @@
 		<autoEnable>true</autoEnable>
 		<template> 
 	       		<inlineTemplate substitution="true">//SIMLINK  EXEC PGM=BPXBATCH,REGION=0M                                  
-//STEPLIB  DD  DSN=CEE.SCEERUN,DISP=SHR                                 
-//STDERR   DD  PATH='${instance-DFS_workingdir}/mystd.err',                                
+//STEPLIB  DD  DSN=CEE.SCEERUN,DISP=SHR
+//STDERR   DD  PATH='${instance-DFS_workingdir}/mystd.err',
 //             PATHDISP=(KEEP,KEEP),                                    
 //             PATHOPTS=(OWRONLY,OCREAT,OTRUNC),                        
 //             PATHMODE=(SIRWXU,SIRWXG,SIRWXO)                          
