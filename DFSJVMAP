@@ -1,0 +1,9 @@
+* This is a mapping of PSB names to Java applications.
+* The location of the specific file must be specified separately
+* by the DFSJVMMS member in the shareable application classpath.  
+*                                                                 
+* PSB          Regions   Java programs                            
+* --------     -------   -------------                            
+* INSUR01      JMP       controller/Insurance   
+******************************************************************
+INSUR01=controller/Insurance             
