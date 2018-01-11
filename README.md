@@ -4,8 +4,6 @@
 
 The IMS Java workflow can configure the environment for a JMP using the IBM® z/OS® Management Facility (z/OSMF) 
 
-JMP regions are like message processing program (MPP) regions, but JMP regions allow the scheduling only of Java programs
-
 The IMS Java workflow will configure the environment with these steps:
 * Create a symbolic link for the Universal Drivers C library (DFSCLIBU).
 * Create a JMP Region jcl needed to run the application.
