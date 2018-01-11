@@ -33,7 +33,7 @@ The repository includes the following files:
     * deployJavaToIMS.xml
       * This is the file that is used to configure Java.  You should not modify the workflow XML.
     * java_workflow_variables.properties
-      * This properties file contains variable key / value pairs that are referenced in the deployJavaToIMS.xml workflow. Edit the java_workflow_variables.properties file to specify the system specific information for the variables in the file. 
+      * This properties file contains variable key / value pairs that are referenced in the deployJavaToIMS.xml workflow. Edit the java_workflow_variables.properties file to specify the system specific information. 
 * `jcl/` :  Three sample JCL that will be created with the system specific information when the workflow runs.
     * DFSJVMEV - Specify the JVM used by the JMP.
     * DFSJVMMS - Specify the classpath 
