@@ -1,1 +1,1 @@
-# ims-devops-zosmf-java
+# ims-devops-imsjava
