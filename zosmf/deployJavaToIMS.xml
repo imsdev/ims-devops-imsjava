@@ -617,7 +617,7 @@
 		<skills>System Programmer</skills>
 		<autoEnable>true</autoEnable>
 		<template> 
-	       		<inlineTemplate substitution="true">//SIMLINK  EXEC PGM=BPXBATCH,REGION=0M                                  
+	       		<inlineTemplate substitution="true">//SIMLINK  EXEC PGM=BPXBATCH,REGION=0M
 //STEPLIB  DD  DSN=CEE.SCEERUN,DISP=SHR
 //STDERR   DD  PATH='${instance-DFS_workingdir}/mystd.err',
 //             PATHDISP=(KEEP,KEEP),                                    
