@@ -31,13 +31,14 @@ To run the workflow, you need the following authority:
 The repository includes the following files:
 * `zosmf/` : 
     * deployJavaToIMS.xml
-      * This is the file that is used to configure Java.  You should not modify the workflow XML.
+      * This is the file that is used to configure Java.  You should not modify this workflow XML file.
     * java_workflow_variables.properties
       * This properties file contains variable key / value pairs that are referenced in the deployJavaToIMS.xml workflow. Edit the java_workflow_variables.properties file to specify the system specific information. 
 * `jcl/` :  Three sample JCL that will be created with the system specific information when the workflow runs.
-    * DFSJVMEV - Specify the JVM used by the JMP.
-    * DFSJVMMS - Specify the classpath 
-    * DFSJVMAP - Map the PSB name to the application main method
+    * DFSJVMEV - Member for specifying the JVM used by the JMP.
+    * DFSJVMMS - Member for specifying the classpath 
+    * DFSJVMAP - Member for mapping the PSB name to the Java class with the application main method
+    * IMERJMP - Sample JCL to start the JMP region
 
 ## Installation  
 * FTP the deployJavaToIMS.xml workflow and the java_workflow_variables.properties files to USS on the z/OS host in binary mode.
