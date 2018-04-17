@@ -32,8 +32,10 @@ The repository includes the following files:
 * `zosmf/` : 
     * deployJavaToIMS.xml
       * This is the file that is used to configure Java.  You should not modify this workflow XML file.
+    * deployJavaNoDbToIMS.xml
+      * This file is used to configure Java with a program that does not have a database component.  You should not modify this workflow XML file.
     * java_workflow_variables.properties
-      * This properties file contains variable key / value pairs that are referenced in the deployJavaToIMS.xml workflow. Edit the java_workflow_variables.properties file to specify the system specific information. 
+      * This properties file contains variable key / value pairs that are referenced in the workflows. Edit the java_workflow_variables.properties file to specify the system specific information. 
 * `jcl/` :  Three sample PROCLIB members and the JMP region JCL that will be created with the system specific information when the workflow runs.
     * DFSJVMEV - Member for specifying the JVM used by the JMP.
     * DFSJVMMS - Member for specifying the classpath 
