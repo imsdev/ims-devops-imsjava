@@ -1,8 +1,0 @@
-* Specify the location of Java Virtual Machine (JVM) installation and 
-* IMS Java native code (libT2DLI.so)                                  
-**********************************************************************
-LIBPATH=>                                                             
-/java7/J7.1/bin/j9vm:>                                                
-/java7/J7.1/bin:>                                                    
-/u/ims/usr/lpp/ims/ims14/imsjava/lib                                      
-* 

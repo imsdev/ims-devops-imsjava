@@ -1,0 +1,28 @@
+//IMDOJMP  JOB ,
+// CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1),NOTIFY=PAUL,REGION=0M
+//       JCLLIB ORDER=IMSVS.IMDO.PROCLIB
+//*******************************************************
+//*
+//* JCL FOR THE IMS JAVA REGION (JMP) USED TO EXECUTE YOUR JAVA
+//* PROGRAM
+//*
+//* AUTHOR            LAST CHANGED        PROJECT
+//* ---------------   --------------      -------------------
+//* PAUL         01/22/16          INSUR01
+//*******************************************************
+//       EXEC DFSJMP,
+//            IMSID=IMDO,JVMOPMAS=DFSJVMMS,ENVIRON=DFSJVMEV,
+//            CL1=009,CL2=009,CL3=009,CL4=009
+//STEPLIB  DD DSN=IMSVS.IMDO.SDFSJLIB,DISP=SHR
+//         DD DSN=IMSVS.IMDO.SDFSRESL,DISP=SHR
+//         DD DSN=CEE.SCEERUN,DISP=SHR
+//         DD DSN=SYS1.CSSLIB,DISP=SHR
+//PROCLIB  DD DSN=IMSVS.IMDO.PROCLIB,DISP=SHR
+//JAVAOUT  DD  PATH='/u/BRYANT/javaInIMS/working/jvm.out',
+//             PATHDISP=(KEEP,KEEP),
+//             PATHOPTS=(OWRONLY,OCREAT,OTRUNC),
+//             PATHMODE=(SIRWXU,SIRWXG,SIRWXO)
+//JAVAERR  DD  PATH='/u/BRYANT/javaInIMS/working/jvm.err',
+//             PATHDISP=(KEEP,KEEP),
+//             PATHOPTS=(OWRONLY,OCREAT,OTRUNC),
+//             PATHMODE=(SIRWXU,SIRWXG,SIRWXO)
