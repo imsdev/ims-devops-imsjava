@@ -36,11 +36,18 @@ The repository includes the following files:
       * This file is used to configure Java with a program that does not have a database component.  You should not modify this workflow XML file.
     * java_workflow_variables.properties
       * This properties file contains variable key / value pairs that are referenced in the workflows. Edit the java_workflow_variables.properties file to specify the system specific information. 
-* `jcl/` :  Three sample PROCLIB members and the JMP region JCL that will be created with the system specific information when the workflow runs.
+* `proclib/` :  Three sample DFSJVMxx PROCLIB members needed for the JMP region.
     * DFSJVMEV - Member for specifying the JVM used by the JMP.
-    * DFSJVMMS - Member for specifying the classpath 
-    * DFSJVMAP - Member for mapping the PSB name to the Java class with the application main method
-    * IMERJMP - Sample JCL to start the JMP region
+    * DFSJVMMS - Member for specifying the classpath.
+    * DFSJVMAP - Member for mapping the PSB name to the Java class with the application main method.
+* `jcl/` :  Sample JCL for creating a program and transaction and starting the JMP region.
+    * CREPGM - Create IMS program that does not use a database.
+    * CREPGMDB - Create IMS program that uses a database.
+    * CRETRAN - Create IMS transaction.
+    * SIMLINK - Member for mapping the PSB name to the Java class with the application main method
+    * STAPGM - Sample JCL to start the JMP region
+    * STATRAN - Sample JCL to start the JMP region
+    * IMDOJMP - Sample JCL to start the JMP region
 
 ## Installation  
 * FTP the deployJavaToIMS.xml workflow and the java_workflow_variables.properties files to USS on the z/OS host in binary mode.
