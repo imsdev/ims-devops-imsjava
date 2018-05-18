@@ -44,6 +44,10 @@ The repository includes the following files:
     * CREPGM - Create IMS program that does not use a database.
     * CREPGMDB - Create IMS program that uses a database.
     * CRETRAN - Create IMS transaction.
+    * SIMLINK - Member for mapping the PSB name to the Java class with the application main method
+    * STAPGM - Sample JCL to start the JMP region
+    * STATRAN - Sample JCL to start the JMP region
+    * IMDOJMP - Sample JCL to start the JMP region
 
 ## Installation  
 * FTP the deployJavaToIMS.xml workflow and the java_workflow_variables.properties files to USS on the z/OS host in binary mode.
