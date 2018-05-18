@@ -67,7 +67,7 @@
 ***********  Z / O S    R E L A T E D    V A R I A B L E S                    ********
 **************************************************************************************
 ************************************************************************************** -->
-<variable name="zOS_CSSLIB" scope="instance">    <!-- z/OS PROC Library (SYS1.CSSLIB) -->
+<variable name="ZOS_CSSLIB" scope="instance">    <!-- z/OS PROC Library (SYS1.CSSLIB) -->
 	<label>z/OS System Services Library</label>
 	<abstract>z/OS System Services DSN</abstract>
 	<description>
@@ -88,7 +88,7 @@
 	</string>
 </variable>
 
-<variable name="zOS_LErunlib" scope="instance">
+<variable name="ZOS_LERUNLIB" scope="instance">
 	<label>Language Environment runtime library</label>
 	<abstract>Data set name used as Language Environment runtime library</abstract>
 	<description>
@@ -105,7 +105,7 @@
 </variable>
 
 
-<variable name="zOS_MACLIB" scope="instance">  <!-- z/OS Macro Library -->
+<variable name="ZOS_MACLIB" scope="instance">  <!-- z/OS Macro Library -->
 	<label>z/OS Macros library</label>
 	<abstract>z/OS Macros library DSN</abstract>
 	<description>
@@ -150,7 +150,7 @@
 </variable>
 
 
-<variable name="DFS_proclib" scope="instance">
+<variable name="DFS_PROCLIB" scope="instance">
 	<label>Authorized IMS PROCLIB </label>
 	<abstract>Data set name of an IMS authorized procedures library</abstract>
 	<description>
@@ -167,7 +167,7 @@
 	</string>
 </variable>
 
-<variable name="DFS_reslib" scope="instance">
+<variable name="DFS_RESLIB" scope="instance">
 	<label>IMS RESLIB</label>
 	<abstract>Data set name of the installed IMS RESLIB</abstract>
 	<description>
@@ -389,17 +389,17 @@
 		<variableValue name="DFS_IMS_LIB_HLQ" required="true" scope="instance"/>
 		
 		<!-- z/OS  related -->
-		<variableValue name="zOS_CSSLIB" required="true" scope="instance"/>
-		<variableValue name="zOS_LErunlib" required="true" scope="instance"/>
-		<variableValue name="zOS_MACLIB" required="true" scope="instance"/>		
+		<variableValue name="ZOS_CSSLIB" required="true" scope="instance"/>
+		<variableValue name="ZOS_LERUNLIB" required="true" scope="instance"/>
+		<variableValue name="ZOS_MACLIB" required="true" scope="instance"/>		
 		
 		<!-- IMS System variables -->				
 		<variableValue name="DFS_IMS_PLEX" required="true" scope="instance"/>
 		<variableValue name="DFS_IMS_SSID" required="true" scope="instance"/>
 			
 		<!-- IMS Libraries -->
-		<variableValue name="DFS_proclib" required="true" scope="instance"/>
-		<variableValue name="DFS_reslib" required="true" scope="instance"/>
+		<variableValue name="DFS_PROCLIB" required="true" scope="instance"/>
+		<variableValue name="DFS_RESLIB" required="true" scope="instance"/>
 
 		<!-- IMS application variables -->	
 		<variableValue name="DFS_appname" required="true" />
@@ -425,13 +425,13 @@
 <ul>
 <li>TSOUSERID: ${instance-TSO_USERID}</li>
 <li>Data set HLQ: ${instance-DFS_IMS_LIB_HLQ}</li>
-<li>z/OS System Services Library: ${instance-zOS_CSSLIB}</li>
-<li>Language Environment runtime library: ${instance-zOS_LErunlib}</li>
-<li>z/OS Macros library: ${instance-zOS_MACLIB}</li>
+<li>z/OS System Services Library: ${instance-ZOS_CSSLIB}</li>
+<li>Language Environment runtime library: ${instance-ZOS_LERUNLIB}</li>
+<li>z/OS Macros library: ${instance-ZOS_MACLIB}</li>
 <li>IMSPLEX name: ${instance-DFS_IMS_PLEX}</li>
 <li>IMSID: ${instance-DFS_IMS_SSID}</li>
-<li>Authorized IMS PROCLIB: ${instance-DFS_proclib}</li>
-<li>IMS RESLIB: ${instance-DFS_reslib} </li>
+<li>Authorized IMS PROCLIB: ${instance-DFS_PROCLIB}</li>
+<li>IMS RESLIB: ${instance-DFS_RESLIB} </li>
 
 <li>IMS application program name: ${instance-DFS_appname}</li>
 <li>IMS Transaction name: ${instance-DFS_traname} </li>
@@ -556,7 +556,7 @@ SH su; cd ${instance-DFS_imslibpath}; ln -e DFSCLIBU libT2DLI.so;
 			<p>The Java System.out stream will be written to ${instance-DFS_workingdir}/jvm.out.  The Java System.err stream will be written to ${instance-DFS_workingdir}/jvm.err.</p>
 			<p>The JMP region processing CLASS will be ${instance-DFS_tranclass} as entered in the gathering variables step.</p>
 			
-			<p>	If this member is already present in your environment ${instance-DFS_proclib}(RC=4), <b>it will not be replaced by the workflow.</b>
+			<p>	If this member is already present in your environment ${instance-DFS_PROCLIB}(RC=4), <b>it will not be replaced by the workflow.</b>
 			To replace the existing member ${instance-DFS_IMS_SSID}JMP with the version provided in this workflow edit the job and the SYSIN DD parm changing from ADD to REPL.
 			</p>	
 			<p>For more information see <a href="https://www-01.ibm.com/support/knowledgecenter/SSEPH2_14.1.0/com.ibm.ims14.doc.apg/ims_container_jdrprogramming.htm?lang=en">Java dependent regions</a></p>
@@ -581,7 +581,7 @@ SH su; cd ${instance-DFS_imslibpath}; ln -e DFSCLIBU libT2DLI.so;
 ./        ADD   NAME=${instance-DFS_IMS_SSID}JMP,LEVEL=00,SOURCE=0,LIST=ALL
 //${instance-DFS_IMS_SSID}JMP  JOB ,
 // CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1),NOTIFY=${instance-TSO_USERID},REGION=0M
-//       JCLLIB ORDER=${instance-DFS_proclib}
+//       JCLLIB ORDER=${instance-DFS_PROCLIB}
 //*******************************************************
 //*
 //* JCL FOR THE IMS JAVA REGION (JMP) USED TO EXECUTE YOUR JAVA
@@ -595,10 +595,10 @@ SH su; cd ${instance-DFS_imslibpath}; ln -e DFSCLIBU libT2DLI.so;
 //            IMSID=${instance-DFS_IMS_SSID},JVMOPMAS=DFSJVMMS,ENVIRON=DFSJVMEV,
 //            CL1=${instance-DFS_tranclass},CL2=${instance-DFS_tranclass},CL3=${instance-DFS_tranclass},CL4=${instance-DFS_tranclass}
 //STEPLIB  DD DSN=${instance-DFS_IMS_LIB_HLQ}.SDFSJLIB,DISP=SHR
-//         DD DSN=${instance-DFS_reslib},DISP=SHR
-//         DD DSN=${instance-zOS_LErunlib},DISP=SHR
-//         DD DSN=${instance-zOS_CSSLIB},DISP=SHR
-//PROCLIB  DD DSN=${instance-DFS_proclib},DISP=SHR
+//         DD DSN=${instance-DFS_RESLIB},DISP=SHR
+//         DD DSN=${instance-ZOS_LERUNLIB},DISP=SHR
+//         DD DSN=${instance-ZOS_CSSLIB},DISP=SHR
+//PROCLIB  DD DSN=${instance-DFS_PROCLIB},DISP=SHR
 //JAVAOUT  DD  PATH='${instance-DFS_workingdir}/jvm.out',
 //             PATHDISP=(KEEP,KEEP),
 //             PATHOPTS=(OWRONLY,OCREAT,OTRUNC),
@@ -625,7 +625,7 @@ SH su; cd ${instance-DFS_imslibpath}; ln -e DFSCLIBU libT2DLI.so;
 		<instructions substitution="true">The location of the Java Virtual Machine and Java native code (libT2DLI.so) library (provided in the variables gathering step) are added to the DFSJVMEV member, and this member will be added to the 
 		data set concatenated in the PROCLIB DD.  This member can also be set with optional flags for gathering JVM usage statistics. See more information at the link provided below.
 		
-	<p>If this member is already present in your environment or in the proclib ${instance-DFS_proclib}(RC=4), <b>it will not be replaced by the workflow.</b>
+	<p>If this member is already present in your environment or in the proclib ${instance-DFS_PROCLIB}(RC=4), <b>it will not be replaced by the workflow.</b>
 	To replace the existing member DFSJVMEV with the version provided in this workflow edit the job and the SYSIN DD parm changing from ADD to REPL.
 	</p>		
 		
@@ -644,8 +644,8 @@ SH su; cd ${instance-DFS_imslibpath}; ln -e DFSCLIBU libT2DLI.so;
 //*
 //UPDTPRC2    EXEC PGM=IEBUPDTE,PARM=MOD                        
 //SYSPRINT DD   SYSOUT=*                                       
-//SYSUT1   DD   DSNAME=${instance-DFS_proclib},DISP=SHR                 
-//SYSUT2   DD   DSNAME=${instance-DFS_proclib},DISP=SHR                 
+//SYSUT1   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR                 
+//SYSUT2   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR                 
 //SYSIN    DD   DATA                                           
 ./        ADD   NAME=DFSJVMEV,LEVEL=00,SOURCE=0,LIST=ALL 
 **********************************************************************
@@ -674,7 +674,7 @@ ${instance-DFS_imslibpath}/lib
 		</description>
 		<prereqStep name="GatherVariables"/>
 		<instructions substitution="true">The IMS PROCLIB member DFSJVMMS contains the Java environment settings, JVM options, and the classpath for the IMS Universal Driver and IMS Java dependent region.  
-	<br/>If this member is already present in your environment or in the proclib ${instance-DFS_proclib}(RC=4), <b>it will not be replaced by the workflow.</b>
+	<br/>If this member is already present in your environment or in the proclib ${instance-DFS_PROCLIB}(RC=4), <b>it will not be replaced by the workflow.</b>
 	<br/>To replace the existing member DFSJVMMS with the version provided in this workflow edit the job and the SYSIN DD parm changing from ADD to REPL.
 	
 	<p>
@@ -700,8 +700,8 @@ ${instance-DFS_imslibpath}/lib
 //*
 //UPDTPRC    EXEC PGM=IEBUPDTE,PARM=MOD                        
 //SYSPRINT DD   SYSOUT=*                                       
-//SYSUT1   DD   DSNAME=${instance-DFS_proclib},DISP=SHR                 
-//SYSUT2   DD   DSNAME=${instance-DFS_proclib},DISP=SHR                 
+//SYSUT1   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR                 
+//SYSUT2   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR                 
 //SYSIN    DD   DATA                                           
 ./        ADD   NAME=DFSJVMMS,LEVEL=00,SOURCE=0,LIST=ALL       
 ********************************************************************
@@ -751,7 +751,7 @@ ${instance-DFS_classpath}:>
 		This step associates the program name ${instance-DFS_appname} with the Java application.
 		
 		<p>
-		If this member is already present in your environment or in the proclib ${instance-DFS_proclib}(RC=4), this step will add the needed control statements at the end of the member (and after re-sequencing the its content).
+		If this member is already present in your environment or in the proclib ${instance-DFS_PROCLIB}(RC=4), this step will add the needed control statements at the end of the member (and after re-sequencing the its content).
 		If the member does not exist, one will be created for you.
 		If the member exist an you want to replace it with the version provided in this workflow edit the job and the SYSIN DD parm and change ADD to REPL. You should also delete any subsequent step.
 
@@ -778,8 +778,8 @@ ${instance-DFS_classpath}:>
 //* *********************************************************
 //UPDTPRC0    EXEC PGM=IEBUPDTE,PARM=MOD                        
 //SYSPRINT DD   SYSOUT=*                                       
-//SYSUT1   DD   DSNAME=${instance-DFS_proclib},DISP=SHR                 
-//SYSUT2   DD   DSNAME=${instance-DFS_proclib},DISP=SHR                 
+//SYSUT1   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR                 
+//SYSUT2   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR                 
 //SYSIN    DD   DATA                                           
 ./        ADD   NAME=DFSJVMAP,LEVEL=00,SOURCE=0,LIST=ALL 
 **********************************************************************
@@ -797,16 +797,16 @@ ${instance-DFS_appname}=${instance-DFS_java_main}
 /*
 //UPDTPRC1    EXEC PGM=IEBUPDTE,PARM=MOD,COND=(0,EQ,UPDTPRC0)
 //SYSPRINT DD   SYSOUT=*
-//SYSUT1   DD   DSNAME=${instance-DFS_proclib},DISP=SHR
-//SYSUT2   DD   DSNAME=${instance-DFS_proclib},DISP=SHR
+//SYSUT1   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR
+//SYSUT2   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR
 //SYSIN    DD   *
 ./     CHANGE    NAME=DFSJVMAP,LIST=ALL,SOURCE=0
 ./     NUMBER    SEQ1=ALL,NEW1=00000100,INCR=15
 /*
 //UPDTPRC2    EXEC PGM=IEBUPDTE,PARM=MOD,COND=(0,NE,UPDTPRC1)
 //SYSPRINT DD   SYSOUT=*
-//SYSUT1   DD   DSNAME=${instance-DFS_proclib},DISP=SHR
-//SYSUT2   DD   DSNAME=${instance-DFS_proclib},DISP=SHR
+//SYSUT1   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR
+//SYSUT2   DD   DSNAME=${instance-DFS_PROCLIB},DISP=SHR
 //SYSIN    DD   *
 ./     CHANGE    NAME=DFSJVMAP,LIST=ALL,SOURCE=0
 **********************************************************************  09999905
@@ -853,7 +853,7 @@ ${instance-DFS_appname}=${instance-DFS_java_main}                       09999935
 				<inlineTemplate substitution="true">//*
 //SPOC      EXEC PGM=CSLUSPOC,
 //  PARM=('IMSPLEX=${instance-DFS_IMS_PLEX},ROUTE=${instance-DFS_IMS_SSID},WAIT=30,F=WRAP')
-//STEPLIB   DD DSN=${instance-DFS_reslib},
+//STEPLIB   DD DSN=${instance-DFS_RESLIB},
 //          DISP=SHR
 //SYSPRINT  DD SYSOUT=*
 //SYSIN     DD *
@@ -883,7 +883,7 @@ ${instance-DFS_appname}=${instance-DFS_java_main}                       09999935
 				<inlineTemplate substitution="true">//*
 //SPOC      EXEC PGM=CSLUSPOC,
 //  PARM=('IMSPLEX=${instance-DFS_IMS_PLEX},ROUTE=${instance-DFS_IMS_SSID},WAIT=30,F=WRAP')
-//STEPLIB   DD DSN=${instance-DFS_reslib},
+//STEPLIB   DD DSN=${instance-DFS_RESLIB},
 //          DISP=SHR
 //SYSPRINT  DD SYSOUT=*
 //SYSIN     DD *
@@ -919,7 +919,7 @@ ${instance-DFS_appname}=${instance-DFS_java_main}                       09999935
 			<template>
 				<inlineTemplate substitution="true">//SPOC      EXEC PGM=CSLUSPOC,
 //  PARM=('IMSPLEX=${instance-DFS_IMS_PLEX},ROUTE=${instance-DFS_IMS_SSID},WAIT=30,F=WRAP')
-//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_reslib
+//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_RESLIB
 //SYSPRINT  DD SYSOUT=*
 //SYSIN     DD *
     CRE TRAN NAME(${instance-DFS_traname}) SET(MSGTYPE(MULTSEG) PGM(${instance-DFS_appname}) CLASS(${instance-DFS_tranclass}))
@@ -955,7 +955,7 @@ ${instance-DFS_appname}=${instance-DFS_java_main}                       09999935
 			<template>
 				<inlineTemplate substitution="true">//SPOC      EXEC PGM=CSLUSPOC,
 //  PARM=('IMSPLEX=${instance-DFS_IMS_PLEX},ROUTE=${instance-DFS_IMS_SSID},WAIT=30,F=WRAP')
-//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_reslib
+//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_RESLIB
 //SYSPRINT  DD SYSOUT=*
 //SYSIN     DD *
      /STA PGM ${instance-DFS_appname}
@@ -981,7 +981,7 @@ ${instance-DFS_appname}=${instance-DFS_java_main}                       09999935
 			<template>
 				<inlineTemplate substitution="true">//SPOC      EXEC PGM=CSLUSPOC,
 //  PARM=('IMSPLEX=${instance-DFS_IMS_PLEX},ROUTE=${instance-DFS_IMS_SSID},WAIT=30,F=WRAP')
-//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_reslib
+//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_RESLIB
 //SYSPRINT  DD SYSOUT=*
 //SYSIN     DD *
      /STA TRAN ${instance-DFS_traname}
@@ -1006,7 +1006,7 @@ ${instance-DFS_appname}=${instance-DFS_java_main}                       09999935
 			<template>
 				<inlineTemplate substitution="true">//SPOC      EXEC PGM=CSLUSPOC,
 //  PARM=('IMSPLEX=${instance-DFS_IMS_PLEX},ROUTE=${instance-DFS_IMS_SSID},WAIT=30,F=WRAP')
-//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_reslib
+//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_RESLIB
 //SYSPRINT  DD SYSOUT=*
 //SYSIN     DD *
        /STO REGION JOBNAME ${instance-DFS_IMS_SSID}JMP
@@ -1061,7 +1061,7 @@ ${instance-DFS_appname}=${instance-DFS_java_main}                       09999935
 			<template>
 				<inlineTemplate substitution="true">//SPOC      EXEC PGM=CSLUSPOC,
 //  PARM=('IMSPLEX=${instance-DFS_IMS_PLEX},ROUTE=${instance-DFS_IMS_SSID},WAIT=30,F=WRAP')
-//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_reslib
+//STEPLIB   DD DISP=SHR,DSN=$instance-DFS_RESLIB
 //SYSPRINT  DD SYSOUT=*
 //SYSIN     DD *
      QRY PGM NAME(${instance-DFS_appname}) SHOW(ALL)
