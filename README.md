@@ -44,6 +44,8 @@ The repository includes the following files:
     * CREPGM - Create IMS program that does not use a database.
     * CREPGMDB - Create IMS program that uses a database.
     * CRETRAN - Create IMS transaction.
+    * IMDOJMP - JCL for starting the JMP region
+    * QRYPGM - Used to query the status of the transaction and program.
     * SIMLINK - Member for mapping the PSB name to the Java class with the application main method
     * STAPGM - Sample JCL to start the JMP region
     * STATRAN - Sample JCL to start the JMP region
@@ -54,11 +56,11 @@ The repository includes the following files:
 * The files need to be made visible to the z/OSMF application.  Do this by changing the access permissions of the files using the chmod command
 * Example chmod commands: 
 ```Java
-chmod 755 deployJavaToIMS.xml
+chmod 644 deployJavaToIMS.xml
 ```
 * Or if the files are in a folder with the name of workflows:
 ```Java 
-chmod -R 755 workflows
+chmod -R 644 workflows
 ```
 
 ## To run the workflow using the z/OSMF web interface
